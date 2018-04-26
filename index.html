@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width="device-width", initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>    
+        
+const inventors = [
+      { first: 'Albert', last: 'Einstein', year: 1879, passed: 1955 },
+      { first: 'Isaac', last: 'Newton', year: 1643, passed: 1727 },
+      { first: 'Galileo', last: 'Galilei', year: 1564, passed: 1642 },
+      { first: 'Marie', last: 'Curie', year: 1867, passed: 1934 },
+      { first: 'Johannes', last: 'Kepler', year: 1571, passed: 1630 },
+      { first: 'Nicolaus', last: 'Copernicus', year: 1473, passed: 1543 },
+      { first: 'Max', last: 'Planck', year: 1858, passed: 1947 },
+      { first: 'Katherine', last: 'Blodgett', year: 1898, passed: 1979 },
+      { first: 'Ada', last: 'Lovelace', year: 1815, passed: 1852 },
+      { first: 'Sarah E.', last: 'Goode', year: 1855, passed: 1905 },
+      { first: 'Lise', last: 'Meitner', year: 1878, passed: 1968 },
+      { first: 'Hanna', last: 'Hammarström', year: 1829, passed: 1909 }
+    ];
+
+
+
+//1.- Filtrar por año de nacimiento, entre 1500 y 1600
+const resultado = inventors.filter(function(el, i){
+  return (el.year > 1500 && el.year < 1600);
+});
+console.log(resultado);
+
+//2.- Copia de array solo con nombre y apellido
+const resultadoMap = inventors.map(function(el, i){
+    return {
+        name: el.first,
+        lastname: el.last,
+    }
+});
+console.log(resultadoMap);
+
+//3.- Ordenar por fecha de nacimiento de mayor a menor
+const ordered = inventors.sort(function(a, b){
+    return (a.year < b.year);
+});
+console.log(ordered);
+
+
+    // 4. Cuantos años vivieron.
+    const anosVida = inventors.reduce(function(fin, inicio) {
+      return anyosTotal + (fin.passed - inicio.year);
+    }, 0);
+    console.log(anosVida);
+
+
+//5.- Ordenar por años vividos.
+const vida = inventors.sort(function(a, b) {
+    const menos = a.passed - a.year;
+    const menos2 = b.passed - b.year;
+    return menos < menos2;
+});
+console.table(vida);
+
+// 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
+    // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
+    // const category = document.querySelector('.mw-category');
+    // const links = Array.from(category.querySelectorAll('a'));
+    // const de = links
+    //             .map(link => link.textContent)
+    //             .filter(streetName => streetName.includes('de'));
+
+
+
+const people = ['Beck, Glenn', 'Becker, Carl', 'Beckett, Samuel', 'Beddoes, Mick', 'Beecher, Henry', 'Beethoven, Ludwig', 'Begin, Menachem', 'Belloc, Hilaire', 'Bellow, Saul', 'Benchley, Robert', 'Benenson, Peter', 'Ben-Gurion, David', 'Benjamin, Walter', 'Benn, Tony', 'Bennington, Chester', 'Benson, Leana', 'Bent, Silas', 'Bentsen, Lloyd', 'Berger, Ric', 'Bergman, Ingmar', 'Berio, Luciano', 'Berle, Milton', 'Berlin, Irving', 'Berne, Eric', 'Bernhard, Sandra', 'Berra, Yogi', 'Berry, Halle', 'Berry, Wendell', 'Bethea, Erin', 'Bevan, Aneurin', 'Bevel, Ken', 'Biden, Joseph', 'Bierce, Ambrose', 'Biko, Steve', 'Billings, Josh', 'Biondo, Frank', 'Birrell, Augustine', 'Black Elk', 'Blair, Robert', 'Blair, Tony', 'Blake, William'];
+
+//7.- Ordenar por el apellido
+const orderedName = people.sort(function(a,b){
+    const el1  = a.split(', ');
+    const el2 = b.split(', ');
+    return (el1 < el2);
+});
+console.log(orderedName); 
+
+// 8. Reduce Exercise
+    // Sum up the instances of each of these
+    const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck', 'pogostick'];
+    const transportation = data.reduce(function(obj, item) {
+      if (!obj[item]) {
+        obj[item] = 0;
+      }
+      obj[item]++;
+      return obj;
+    }, {});
+    console.log(transportation);
+
+</script>
+</body>
+</html>
